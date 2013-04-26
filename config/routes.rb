@@ -15,6 +15,10 @@ Rottenpotatoes::Application.routes.draw do
   resources :movies
 
   root :to => redirect('/movies')
+
+  #match ':controller/:action/:id'#, to 'movies#find_by_director'
+  match "/movies/find_by_director/:id" => "movies#find_by_director", as: :find_by_director 
+  #get 'movies/find_by_director/:id', to: 'movies#find_by_director'
   # Sample resource route with options:
   #   resources :products do
   #     member do

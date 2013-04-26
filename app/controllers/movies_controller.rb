@@ -7,7 +7,7 @@ class MoviesController < ApplicationController
   end
 
   def index
-    session.clear
+    #session.clear
     sort = params[:sort] || session[:sort]
     case sort
     when 'title'
@@ -63,6 +63,11 @@ class MoviesController < ApplicationController
     @movie.destroy
     flash[:notice] = "Movie '#{@movie.title}' deleted."
     redirect_to movies_path
+  end
+  #Colin added:
+  def find_by_director
+    @director=Movie.find(params[:id]).director
+    @movies=Movie.find_all_by_director(@director)
   end
 
 end
