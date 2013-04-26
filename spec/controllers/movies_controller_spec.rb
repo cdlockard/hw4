@@ -27,7 +27,8 @@ describe MoviesController do
 			@mov1=Movie.create!(:title => 'test1', :director => 'Steven Spielberg')
 		end
 		it 'should call Movie model method to find matching movies' do
-			Movie.should_receive(:find_all_by_director).with(@fake_movie.director).and_return(@fake_movie)
+			movie_list = mock('movie list')
+			Movie.should_receive(:find_same_director).with(@mov1).and_return(movie_list)
 			get :find_by_director, {:id => @fake_movie.id}
 		end
 
@@ -38,11 +39,28 @@ describe MoviesController do
 		end
 		it 'should make matching results available to the template' do
 			movie_list = mock('movie list')
-			Movie.stub(:find_all_by_director).and_return(movie_list)
+			Movie.stub(:find_same_director).and_return(movie_list)
 			get :find_by_director, {:id => '1'}
 			assigns(:movies).should == movie_list
 		end
 
+	end
+
+	describe 'fail to find movies by a null director' do
+		before :each do
+			@mov1=Movie.create!(:title => 'test1')
+			@mov2=Movie.create!(:title => 'test2', :director => 'Federico Fellini')
+			@mov3=Movie.create!(:title => 'test3')
+		end
+
+		it 'should not call Movie model method to find matching movies' do
+			movie_list = mock('movie list')
+			Movie.should_not_receive(:find_same_director).with(@mov1).and_return(movie_list)
+			get :find_by_director, {:id => @mov1.id}
+		end
+
+
+		
 	end
 
 end
