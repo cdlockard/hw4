@@ -20,16 +20,12 @@ describe MoviesController do
 
 	describe 'find movies with same director' do
 		before :each do
-			@fake_movie = mock('movie1')
-			@fake_movie.stub(:title).and_return('fake')
-			@fake_movie.stub(:id).and_return(1)
-			@fake_movie.stub(:director).and_return('Steven Spielberg')
 			@mov1=Movie.create!(:title => 'test1', :director => 'Steven Spielberg')
 		end
 		it 'should call Movie model method to find matching movies' do
 			movie_list = mock('movie list')
 			Movie.should_receive(:find_same_director).with(@mov1).and_return(movie_list)
-			get :find_by_director, {:id => @fake_movie.id}
+			get :find_by_director, {:id => @mov1.id}
 		end
 
 		it 'should render the template for displaying matches' do

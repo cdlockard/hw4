@@ -64,13 +64,14 @@ class MoviesController < ApplicationController
     flash[:notice] = "Movie '#{@movie.title}' deleted."
     redirect_to movies_path
   end
+
   #Colin added:
   def find_by_director
-    @director=Movie.find(params[:id]).director
-    if @director == nil or @director == ''
+    @director=Movie.find(params[:id]).director #assign director to instance variable since it is used in view
+    if @director == nil or @director == '' #sad path in case no director is listed
       flash[:notice] = "'#{Movie.find(params[:id]).title}' has no director info"
       redirect_to movies_path
-    else
+    else #calls newly created model method
       @movies=Movie.find_same_director(Movie.find(params[:id]))
     end
   end

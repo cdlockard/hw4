@@ -180,6 +180,7 @@ RSpec:
     - 0
     - 
     - 
+    - 
     - 1
     - 4
     - 4
@@ -197,12 +198,13 @@ RSpec:
     - 0
     - 
     - 
+    - 
     - 1
     - 2
     - 
     - 
     - 
-  :created_at: 2013-04-25 23:34:45.826078000 -07:00
+  :created_at: 2013-04-26 18:05:30.489182000 -07:00
 Cucumber Features:
   :original_result:
     /Users/colinlockard/Documents/Mills/CS 170/Sites/hw4/app/controllers/application_controller.rb:
@@ -287,6 +289,7 @@ Cucumber Features:
     - 0
     - 
     - 
+    - 
     - 1
     - 2
     - 2
@@ -304,9 +307,10 @@ Cucumber Features:
     - 1
     - 
     - 
+    - 
     - 1
     - 1
     - 
     - 
     - 
-  :created_at: 2013-04-25 23:34:33.911087000 -07:00
+  :created_at: 2013-04-26 18:05:42.847710000 -07:00

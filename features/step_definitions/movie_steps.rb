@@ -7,6 +7,7 @@ Given /the following movies exist/ do |movies_table|
   end
 end
 
+#Colin added 4/24:
 Then /^the director of "([^\"]*)" should be "([^\"]*)"$/ do |movie, director|
   Movie.find_by_title(movie).director.should == director
 end
